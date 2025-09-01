@@ -1,10 +1,10 @@
-import { PokemonClient } from "pokenode-ts";
+import { Pokemon, PokemonClient } from "pokenode-ts";
 import { PokemonWithTypes } from "./types";
 
 async function getPokemonList(offset: number): Promise<PokemonWithTypes[]> {
   const api = new PokemonClient();
   const res = await api.listPokemons(offset, 20);
-  
+
   const listWithTypes = await Promise.all(
     res.results.map(async (pokemon) => {
       const detail = await api.getPokemonByName(pokemon.name);
@@ -20,4 +20,11 @@ async function getPokemonList(offset: number): Promise<PokemonWithTypes[]> {
   return listWithTypes;
 }
 
-export { getPokemonList };
+async function getPokemon(id: number): Promise<Pokemon> {
+  const api = new PokemonClient();
+  const detail = await api.getPokemonById(id);
+
+  return detail;
+}
+
+export { getPokemonList, getPokemon };
