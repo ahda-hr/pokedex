@@ -1,5 +1,6 @@
-import { Pokemon, PokemonClient } from "pokenode-ts";
-import { PokemonWithTypes } from "./types";
+import { EvolutionClient, Pokemon, PokemonClient } from "pokenode-ts";
+import { FlattenedEvolution, PokemonWithTypes } from "./types";
+import { flattenEvolution } from "./helpers";
 
 async function getPokemonList(offset: number): Promise<PokemonWithTypes[]> {
   const api = new PokemonClient();
@@ -27,4 +28,11 @@ async function getPokemon(id: number): Promise<Pokemon> {
   return detail;
 }
 
-export { getPokemonList, getPokemon };
+async function getEvolutionChain(id: number): Promise<FlattenedEvolution[]> {
+  const api = new EvolutionClient();
+  const chain = await api.getEvolutionChainById(id);
+
+  return flattenEvolution(chain);
+}
+
+export { getPokemonList, getPokemon, getEvolutionChain };

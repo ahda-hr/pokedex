@@ -14,9 +14,9 @@ export default async function DetailPage({
 
   return (
     <div
-      className={`relative h-screen w-full flex flex-col ${getTypeColor(type)}`}
+      className={`relative h-screen w-full flex flex-col xl:max-w-5xl xl:flex-row xl:rounded-4xl xl:p-4 mx-auto xl:my-4 ${getTypeColor(type)}`}
     >
-      <div className="absolute left-0 right-0 top-0 h-72 flex justify-center items-end">
+      <div className="absolute left-0 right-0 top-0 h-72 flex justify-center xl:right-auto xl:top-8 xl:left-8 items-end">
         <Image
           src={pokemon.sprites.other?.["official-artwork"].front_default ?? ""}
           alt={pokemon.name}
@@ -25,8 +25,8 @@ export default async function DetailPage({
           />
       </div>
 
-      <div className="p-6 h-60">
-        <div className="flex justify-between items-center ">
+      <div className="p-6 h-60 shrink-0">
+        <div className="flex justify-between items-center xl:gap-8 ">
           <div className="">
             <h1 className="text-3xl font-bold text-white capitalize mb-2">{pokemon.name}</h1>
             <div className="flex gap-2">
@@ -44,7 +44,7 @@ export default async function DetailPage({
         </div>
       </div>
 
-      <div className="grow p-6 rounded-t-4xl bg-white">
+      <div className="grow p-6 rounded-t-4xl xl:rounded-4xl bg-white">
         <PokemonDetailTabs pokemon={pokemon} />
       </div>
     </div>

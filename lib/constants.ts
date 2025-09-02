@@ -20,3 +20,12 @@ export const typeColors: Record<string, string> = {
   unknown: "bg-gray-400",
   water: "bg-blue-400",
 };
+
+export const statLabels: Record<string, string> = {
+  hp: "HP",
+  attack: "Attack",
+  defense: "Defense",
+  "special-attack": "Sp. Atk",
+  "special-defense": "Sp. Def",
+  speed: "Speed",
+}

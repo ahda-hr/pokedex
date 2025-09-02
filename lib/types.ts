@@ -6,3 +6,9 @@ export interface PokemonWithTypes {
   types: PokemonType[];
   image: string;
 }
+
+export interface FlattenedEvolution {
+  id: string;
+  name: string;
+  image: string;
+}
